@@ -20,12 +20,12 @@ const TaskCalender: React.FC = () => {
 
   const handleDateChange = (date: Date) => {
     setStartDate(date);
-  }
+  };
 
   const modalSet = (taskId: string, modalOn: boolean) => {
     setTaskId(taskId);
     setModalOn(modalOn);
-  }
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -94,6 +94,6 @@ const TaskCalender: React.FC = () => {
       </div>
     </TaskIdContext.Provider>
   );
-}
+};
 
 export default TaskCalender;

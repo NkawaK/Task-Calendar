@@ -4,7 +4,7 @@ import { FirebaseContext ,db } from "../Firebase";
 import { TaskIdContext } from "../pages/TaskCalendar";
 import DatePicker from "react-datepicker";
 import Moment from "moment";
-import uuidv4 from "uuidv4";
+import { uuid } from 'uuidv4';
 
 interface Props {
   modalOn: boolean;
@@ -48,7 +48,7 @@ const Modal: React.FC<Props> = (props) => {
   const setTask = (e: React.FormEvent) => {
     e.preventDefault();
     if (!taskId) {
-      taskId = uuidv4();
+      taskId = uuid();
     }
 
     const task = {

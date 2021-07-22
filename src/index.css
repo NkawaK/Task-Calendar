@@ -315,6 +315,7 @@ code {
 }
 
 .modal_content_form_details textarea {
+  resize: none;
   width: 100%;
   height: 100%;
 }

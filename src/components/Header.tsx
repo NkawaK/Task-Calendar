@@ -16,7 +16,7 @@ const UserNav: React.FC = () => {
   } else {
     return null;
   }
-}
+};
 
 const Header: React.FC = () => {
   return (
@@ -27,6 +27,6 @@ const Header: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Header;

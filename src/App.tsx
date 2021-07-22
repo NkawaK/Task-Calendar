@@ -40,6 +40,7 @@ const App: React.FC = () => {
       </div>
     );
   }, []);
+
   const Loading = React.useCallback(() => {
     return <div>loading now...</div>
   }, []);
