@@ -21,9 +21,9 @@ const Task: React.FC<Props> = (props) => {
   const task: Task = {
     taskId: props.taskData.taskId,
     task: props.taskData.task
-  };
+  };    
   
-  const taskElement = 
+  return (
     <div className={task.task.complete? "content_left_taskcomp" : "content_left_taskincomp"}
       onClick={() => props.modalSet(task.taskId, true)}
     >
@@ -34,9 +34,8 @@ const Task: React.FC<Props> = (props) => {
       <span className={task.task.complete? "content_left_taskcomp_check" : "content_left_taskincomp_check"}>
         {task.task.complete? "\u2714" : "\u2716"}
       </span>
-    </div>;
-  
-  return taskElement;
+    </div>
+  );
 }
 
 export default Task;

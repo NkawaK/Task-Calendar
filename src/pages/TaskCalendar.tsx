@@ -28,16 +28,12 @@ const TaskCalender: React.FC = () => {
   };
 
   useEffect(() => {
-    let mounted = true;
     const fetchTasks = [];
 
     db.collection(`users/${userId}/tasks`)
       .where("date", "==", Moment(startDate).format("YYYY/MM/DD"))
       .get()
       .then((snapShot) => {
-        if (!mounted) {
-          return;
-        };
         if (snapShot && snapShot.docs) {
           snapShot.forEach(doc => {
             fetchTasks.push(
@@ -59,9 +55,6 @@ const TaskCalender: React.FC = () => {
           setTasks([fetchTasks]);
         }
       });
-    return () => {
-      mounted = false;
-    };
   }, [startDate, taskId]);
 
   return (
