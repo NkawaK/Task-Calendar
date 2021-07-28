@@ -7,8 +7,6 @@ import Moment from "moment";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export const TaskIdContext = React.createContext("");
-
 const TaskCalender: React.FC = () => {
   const initialDate: Date = new Date();
   
@@ -58,34 +56,33 @@ const TaskCalender: React.FC = () => {
   }, [startDate, taskId]);
 
   return (
-    <TaskIdContext.Provider value={taskId}>
-      <div className="content">
-        <div className="content_left">
-          <div className="content_left_head">
-            <span className="content_left_list">List</span>
-            <button className="content_left_add" onClick={() => modalSet("", true)}>
-              Add+
-            </button>
-          </div>
-          <div className="content_left_tasks_area">
-            {tasks}
-          </div>
+    <div className="content">
+      <div className="content_left">
+        <div className="content_left_head">
+          <span className="content_left_list">List</span>
+          <button className="content_left_add" onClick={() => modalSet("", true)}>
+            Add+
+          </button>
         </div>
-        <div className="content_right">
-          <DatePicker
-            selected={startDate}
-            onChange={handleDateChange}
-            inline
-          />
+        <div className="content_left_tasks_area">
+          {tasks}
         </div>
-        <Modal
-          modalOn={modalOn}
-          startDate={startDate}
-          setStartDate={setStartDate}
-          modalSet={modalSet}
+      </div>
+      <div className="content_right">
+        <DatePicker
+          selected={startDate}
+          onChange={handleDateChange}
+          inline
         />
       </div>
-    </TaskIdContext.Provider>
+      <Modal
+        taskId={taskId}
+        modalOn={modalOn}
+        startDate={startDate}
+        setStartDate={setStartDate}
+        modalSet={modalSet}
+      />
+    </div>
   );
 };
 

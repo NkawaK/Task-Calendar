@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import { FirebaseContext ,db } from "../Firebase";
-import { TaskIdContext } from "../pages/TaskCalendar";
 import DatePicker from "react-datepicker";
 import Moment from "moment";
 import { uuid } from 'uuidv4';
 
 interface Props {
+  taskId: string;
   modalOn: boolean;
   startDate: Date;
   setStartDate: Function;
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Modal: React.FC<Props> = (props) => {
-  let taskId = useContext(TaskIdContext);
+  let taskId = props.taskId;
 
   const { userId } = useContext(FirebaseContext);
   const [title, setTitle] = useState("");
@@ -56,7 +56,7 @@ const Modal: React.FC<Props> = (props) => {
       complete: complete.toLowerCase() === "true",
       date: Moment(props.startDate).format("YYYY/MM/DD"),
       detail: detail? detail : ""
-    }
+    };
     
     db.collection(`users/${userId}/tasks`).doc(`${taskId}`)
       .set(task)
